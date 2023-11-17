@@ -1,0 +1,15 @@
+Admin and Regular User
+
+Admin button - hidden from the regular users
+            - show/displayed to the Admin users
+
+middleware -> we will use the middleware to separate the Admin from the regular users
+
+What is a middleware? -> a mechanism that act like a filter for the HTTP request
+
+ex: John Smith --> login page [username, password]  [Middleware::Auth] ---> Grant Access/Denied
+
+If Users --- role_id == 1 ? Grant Access to the Admin (Admin button)
+If not equal to 1, denied access to Admin/hide the Admin button
+
+Gate --- It determines wethere to give access or block access
