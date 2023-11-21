@@ -17,4 +17,12 @@ class CategoryPost extends Model
     public function category(){
         return $this->belongsTo(Category::class); // Table: categories
     }
+
+    public function post(){
+        return $this->belongsTo(Post::class);
+    }
+
+    public function categories(){
+        return $this->hasMany(Category::class);
+    }
 }

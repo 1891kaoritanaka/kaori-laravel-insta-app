@@ -1,29 +1,4 @@
 {{-- Edit Category --}}
-{{-- <div class="madal fade" id="edit-category-{{ $category->id }}">
-    <div class="modal-dialog">
-        <form action="{{ route('admin.categories.update',$category->id) }}" method="post">
-            @csrf
-            @method('PATCH')
-            <div class="modal-content border-warning">
-                <div class="modal-header border-warning">
-                    <h3 class="h5 modal-title border-warning text-warning">
-                        <i class="fa-regular fa-pen-to-square"></i> Edit Category
-                    </h3>
-                </div>
-                <div class="modal-body">
-                    <input type="text" name="new_name" id="" class="form-control" placeholder="Add a new category" value="{{ $category->name }}">
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-warning btn-sm">Update</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div> --}}
-
-
-{{-- Edit Category --}}
 <div class="modal fade" id="edit-category-{{ $category->id }}">
     <div class="modal-dialog">
         <form action="{{ route('admin.categories.update', $category->id) }}" method="post">

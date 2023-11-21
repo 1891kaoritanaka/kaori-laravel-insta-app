@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/post/{id}/edit',[PostController::class,'edit'])->name('post.edit');
     Route::patch('/post/{id}/update',[PostController::class,'update'])->name('post.update');
     Route::delete('/post/{id}/destroy',[PostController::class,'destroy'])->name('post.destroy');
+    Route::get('/post/{id}/category', [PostController::class, 'category'])->name('post.category');
+
 
     # Comment
     Route::post('comment/{id}/store',[CommentController::class,'store'])->name('comment.store');

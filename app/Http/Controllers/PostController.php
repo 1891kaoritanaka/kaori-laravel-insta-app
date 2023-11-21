@@ -148,4 +148,10 @@ class PostController extends Controller
         return redirect()->route('index');
     }
 
+    # $id is a category id
+    public function category($id){
+        $category = $this->category->findOrFail($id);
+
+        return view('users.posts.category')->with('category',$category);
+    }
 }
