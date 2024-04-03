@@ -70,6 +70,10 @@
                             <li class="nav-item" title="Create Post">
                                 <a href="{{ route('post.create') }}" class="nav-link"><i class="fa-solid fa-circle-plus text-dark icon-sm"></i></a>
                             </li>
+                            {{-- Message --}}
+                            <li class="nav-item" title="Message">
+                                <a href="{{ route('chat.index', Auth::user()->id) }}" class="nav-link"><i class="fa-solid fa-envelope text-dark icon-sm"></i></a>
+                            </li>
                             {{-- Account --}}
                             <li class="nav-item dropdown">
                                 <button id="account-dropdown"class="btn shadow-none nav-link" data-bs-toggle="dropdown">

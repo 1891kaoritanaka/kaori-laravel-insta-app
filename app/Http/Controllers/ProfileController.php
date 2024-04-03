@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -64,5 +67,68 @@ class ProfileController extends Controller
         $user = $this->user->findOrFail($id);
 
         return view('users.profile.following')->with('user',$user);
+    }
+
+    public function updatePassword(Request $request){
+
+        // if($request->current_password != $user->password){
+        //     $errorMessage = 'Current Password is not correct';
+        //     return redirect()->back()->with('errorMessage', $errorMessage);
+        // }
+
+        // return Hash::check($request->current_password, Auth::user()->password);
+
+        // $request->validate([
+        //     'current_password' => ['required', function ($attribute, $value, $fail) {
+        //         if (!Hash::check($value, Auth::user()->password)) {
+        //             $fail('Current Password is not correct.');
+        //         }
+        //     },],
+        //     'new_password'     => ['required', 'string', 'min:8'],
+        //     'password_confirm' => ['required', 'string', 'min:8']
+        // ]);
+        // // ,'confirmed'
+
+        // if($request->new_password !== $request->password_confirm){
+        //     $errorMessage = 'Confirm Password is not correct.';
+        //     return redirect()->back()->with('errorMessage', $errorMessage);
+        // }
+        // $user = $this->user->findOrFail(Auth::user()->id);
+        // $hashedPassword = Hash::make($request->new_password);
+        // $user->password = $hashedPassword;
+        // $user->save();
+
+        // $successMessage = 'Password Successfully Changed!';
+
+        // return redirect()->back()->with('successMessage', $successMessage);
+
+
+        // Check the current password (Auth::user()->password) is the logged in user
+        if(!Hash::check($request->current_password, Auth::user()->password)){
+            return redirect()->back()
+            ->with('current_password_error', 'That\'s not your current password. Try again.')
+            ->with('error_password','Unable to change your password');
+        }
+
+        // Check the new password if it is equal to new password
+        if($request->current_password === $request->new_password){
+            return redirect()->back()
+            ->with('new_password_error', 'New password cannnot be the same as your current password. Try again.')
+            ->with('error_password', 'Unable to change your password');
+        }
+
+        // Validate the data
+        $request->validate([
+            // 'new_password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()]
+            'new_password' => ['required', 'confirmed', 'min:8', 'alpha_num']
+        ]);
+        // confirmed => current_password との確認？
+
+        $user = $this->user->findOrFail(Auth::user()->id);
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->back()
+        ->with('success_password', 'Password Changed Successfully.');
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0916371ad6944219d713280facc6746",
+    "content-hash": "35cf13835bda63f2a8c7fe808c511968",
     "packages": [
         {
             "name": "brick/math",
@@ -1426,16 +1426,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v4.2.2",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "a58ec468db4a340b33f3426c778784717a2c144b"
+                "reference": "d166e09cdcb2e23836f694774cba77a32edb6007"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/a58ec468db4a340b33f3426c778784717a2c144b",
-                "reference": "a58ec468db4a340b33f3426c778784717a2c144b",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/d166e09cdcb2e23836f694774cba77a32edb6007",
+                "reference": "d166e09cdcb2e23836f694774cba77a32edb6007",
                 "shasum": ""
             },
             "require": {
@@ -1482,9 +1482,9 @@
                 "ui"
             ],
             "support": {
-                "source": "https://github.com/laravel/ui/tree/v4.2.2"
+                "source": "https://github.com/laravel/ui/tree/v4.3.0"
             },
-            "time": "2023-05-09T19:47:28+00:00"
+            "time": "2023-12-19T14:46:09+00:00"
         },
         {
             "name": "league/commonmark",

@@ -54,4 +54,82 @@
             </form>
         </div>
     </div>
+    {{-- Create another from here for the edit/change password --}}
+    <div class="row justify-content-center mt-3">
+        <div class="col-8">
+            {{-- <form action="{{ route('profile.updatePassword') }}" method="post">
+                @csrf
+                @method('PATCH')
+                <h2 class="h3 mb-3 fw-light text-muted">Change Password Here</h2>
+                <div class="mb-3">
+                    <label for="current-password" class="form-label fw-bold">Current Password</label>
+                    <input type="password" name="current_password" id="current-password" class="form-control">
+                    @error('current_password')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="new-password" class="form-label fw-bold">New Password</label>
+                    <input type="password" name="new_password" id="new-password" class="form-control">
+                    @error('new_password')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="password-confirm" class="form-label fw-bold">Confirm Password</label>
+                    <input type="password" name="password_confirm" id="password-confirm" class="form-control">
+                    @error('password_confirm')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                    @if(session('errorMessage'))
+                        <div class="text-danger small">
+                            {{ session('errorMessage') }}
+                        </div>
+                    @endif
+                </div>
+                <button type="submit" class="btn btn-warning px-5">Update Password</button>
+                @if(session('successMessage'))
+                    <div class="alert alert-success">
+                        {{ session('successMessage') }}
+                    </div>
+                @endif
+            </form> --}}
+            <form action="{{ route('profile.updatepassword') }}" class="mt-5 bg-white shadow rounded-3 p-5" method="post">
+                @csrf
+                @method('PATCH')
+                <h2 class="h3 mb-3 fw-light text-muted">Update Password</h2>
+                <div class="mb-3">
+                    <label for="current-password" class="form-label fw-bold">Current Password</label>
+                    <input type="password" name="current_password" id="current-password" class="form-control">
+                    @if (session('current_password_error'))
+                        <p class="text-danger small">{{ session('current_password_error') }}</p>
+                    @endif
+                    @error('current_password')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="new-password" class="form-label fw-bold">New Password</label>
+                    <input type="password" name="new_password" id="new-password" class="form-control" aria-describedby="password-info">
+                    <div class="form-text" id="password-info">
+                        Your password must be at least 8 characters long, and contain letters and numbers.
+                    </div>
+                    @if (session('new_password_error'))
+                        <p class="text-danger small">{{ session('new_password_error') }}</p>
+                    @endif
+                    @error('new_password')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="new-password-confirmation" class="form-label fw-bold">Confirm New Password</label>
+                    <input type="password" name="new_password_confirmation" id="new-password-confirmation" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-warning px-5">Update Password</button>
+                @if (session('success_password'))
+                    <p class="text-success small">{{ session('success_password') }}</p>
+                @endif
+            </form>
+        </div>
+    </div>
 @endsection

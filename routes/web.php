@@ -3,16 +3,17 @@
 // Regular routes
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\ProfileController;
 
 // Admin routes
-use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CategoriesController;
 
 /*
@@ -50,6 +51,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::patch('/profile/update',[ProfileController::class,'update'])->name('profile.update');
     Route::get('/profile/{id}/followers',[ProfileController::class,'followers'])->name('profile.followers');
     Route::get('/profile/{id}/following',[ProfileController::class,'following'])->name('profile.following');
+    Route::patch('/profile/update-password',[ProfileController::class,'updatePassword'])->name('profile.updatepassword');
 
     # Like
     Route::post('/like/{post_id}/store',[LikeController::class,'store'])->name('like.store');
@@ -59,9 +61,15 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/follow/{user_id}/store',[FollowController::class,'store'])->name('follow.store');
     Route::delete('/follow/{user_id}/destroy',[FollowController::class,'destroy'])->name('follow.destroy');
 
+    # Chat
+    Route::get('/chat/{id}/index',[ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/{id}/show',[ChatController::class, 'show'])->name('chat.show');
+
+
     # Note: All the routes we have above are regular (regular users) routes
 
 
+    #Admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'],function(){
         # Admin Users
         //route('admin.users) is the same with admin/users
@@ -85,5 +93,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::group(['middleware' => 'auth'], function(){
         Route::get('/',[HomeController::class, 'index'])->name('index');
         Route::get('/people',[HomeController::class, 'search'])->name('search');
+        Route::get('/people/show',[HomeController::class, 'allUsers'])->name('allusers');
+
     });
 });

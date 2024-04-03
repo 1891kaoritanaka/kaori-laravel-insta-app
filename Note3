@@ -1,0 +1,15 @@
+Goal: Build an additional feature to the Laravel-Insta App
+Feature: Simple Chat Message (Chat Box)
+
+A. The logged-in user (AUTH User) can send message to the user that he is following.
+B. The other user, can also reply to the message
+
+Steps/Hint
+1. Create the .blade.php file (Example: index.blade.php, chats.blade.php)
+2. Create the migration -- for table (chats)
+3. Create the model of the migration ---Chat.php
+4. Create the ChatController.php
+5. Note: Make sure that you create a method relationship between User.php and Chat.php so that the two models will be connected, when they are connected, the User can easily retrieve the message from the Chat.php model.
+
+Note: You have to save the message in the chats table
+| In chats table, there should be sender id (=user_id), receiver_id, message, timestamps

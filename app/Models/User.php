@@ -75,6 +75,10 @@ class User extends Authenticatable
         # using the (where('follower_id'),Auth::user()->id)
     }
 
+    public function message(){
+        return $this->hasMany(Chat::class);
+    }
+
     # Users table
     # id      name
     # 1       John Smith

@@ -77,6 +77,12 @@ class HomeController extends Controller
 
         return view('users.search')->with('users', $users)->with('search', $request->search);
     }
+
+    public function allUsers(){
+        $all_users = $this->user->all();
+
+        return view('users.users')->with('all_users',$all_users);
+    }
 }
 
 

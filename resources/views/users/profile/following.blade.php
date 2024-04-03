@@ -24,7 +24,7 @@
                                 </a>
                             </div>
                             <div class="col ps-0 text-truncate">
-                                <a href="{{ route('profile.show',$following->following->id) }}" class="text-decoration-none text-dark fw-vold">{{ $following->following->name }}</a>
+                                <a href="{{ route('profile.show',$following->following->id) }}" class="text-decoration-none text-dark fw-bold">{{ $following->following->name }}</a>
                             </div>
                             <div class="col text-end">
                                 @if ($following->following->id != Auth::user()->id)
